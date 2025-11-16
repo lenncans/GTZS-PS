@@ -1,80 +1,155 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GTZS Private Server</title><script src="https://cdn.tailwindcss.com"></script><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<title>GTZS Private Server</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+
 <style>
 /* Animasi konten utama */
-.main-content-anim { animation: fadeInScale 1.4s ease-out forwards, floaty 6s ease-in-out infinite; opacity: 0; }
+.main-content-anim {
+    animation: fadeInScale 1.4s ease-out forwards, floaty 6s ease-in-out infinite;
+    opacity: 0;
+}
 @keyframes fadeInScale {0%{opacity:0;transform:scale(0.97);}100%{opacity:1;transform:scale(1);}}
-@keyframes floaty {0%{transform:translateY(0px);}50%{transform:translateY(-6px);}100%{transform:translateY(0px);}}/* Particle container untuk kolom */ .menu-column-particles { position: relative; } .menu-column-particles canvas { position: absolute !important; top: 0; left: 0; width: 100% !important; height: 100% !important; pointer-events: none; z-index: 0; } .menu-column-content { position: relative; z-index: 10; } </style>
+@keyframes floaty {0%{transform:translateY(0px);}50%{transform:translateY(-6px);}100%{transform:translateY(0px);}}
 
+/* Particle container untuk main dan kolom menu */
+#main-particles, .menu-column-particles { position: absolute; inset: 0; z-index: 10; }
+#main-particles canvas, .menu-column-particles canvas { pointer-events: none !important; }
+
+/* Loading bar */
+.loading-bar-container {
+    width: 200px;
+    height: 8px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+.loading-bar-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg,#00e6ff,#ff00d4);
+    animation: fillBar 7s linear forwards;
+}
+@keyframes fillBar {0%{width:0%;}100%{width:100%;}}
+
+/* Neon icon di loading */
+.neon-icon img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid #00e6ff;
+}
+
+/* About overlay font styling */
+#about-overlay .whitespace-pre-wrap {
+    font-family: 'Rajdhani', sans-serif;
+    letter-spacing: 0.5px;
+    line-height: 1.6;
+    color: #ffffff;
+}
+</style>
 </head>
-<body class="bg-black"><div id="tsparticles-gtzps" style="position: fixed; inset: 0; z-index: 0;"></div>
-<audio id="bg-music" loop autoplay>
+<body class="bg-black">
+
+<!-- PARTICLES BACKGROUND -->
+<div id="tsparticles-gtzps" style="position: fixed; inset: 0; z-index: 0;"></div>
+
+<!-- MUSIC -->
+<audio id="bg-music" loop>
     <source src="https://files.catbox.moe/e3zea4.mp3" type="audio/mpeg">
 </audio>
+
+<!-- MUSIC BUTTON -->
 <div class="absolute top-6 left-6 z-30">
-    <button id="music-toggle-btn" class="flex items-center gap-3 px-3 py-2 bg-black/40 backdrop-blur rounded-2xl border border-[#00e6ff] hover:scale-105 transition-transform duration-300" aria-pressed="false">
+    <button id="music-toggle-btn" class="flex items-center gap-3 px-3 py-2 bg-black/40 backdrop-blur rounded-2xl border border-[#00e6ff] hover:scale-105 transition-transform duration-300">
         <img src="https://files.catbox.moe/o8bf91.jpg" class="w-8 h-8 rounded-full object-cover">
-        <span id="music-status" class="text-sm font-semibold tracking-wider text-white">Stop Music</span>
+        <span id="music-status" class="text-sm font-semibold tracking-wider text-white">Play Music</span>
     </button>
-</div><div id="loading-screen" class="fixed inset-0 z-40 flex flex-col items-center justify-center opacity-100">
+</div>
+
+<!-- LOADING SCREEN -->
+<div id="loading-screen" class="fixed inset-0 z-40 flex flex-col items-center justify-center opacity-100">
     <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-[#00000080] backdrop-blur-sm"></div>
     <div class="relative z-50 flex flex-col items-center gap-4 p-6 rounded-2xl border border-[#00e6ff] bg-black/60 shadow-2xl">
         <div class="neon-icon">
-            <img src="https://files.catbox.moe/o8bf91.jpg" class="w-full h-full object-cover">
+            <img src="https://files.catbox.moe/o8bf91.jpg">
         </div>
         <div class="loading-bar-container"><div class="loading-bar-fill"></div></div>
         <h2 class="text-center text-xl font-bold tracking-wider text-white" style="font-family:'Orbitron',sans-serif;">Loading Server...</h2>
         <p class="text-sm text-[#9fdcff]">Memuat aset neon & koneksi virtual...</p>
     </div>
-</div><div id="about-overlay" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 opacity-0 hidden-fade">
-    <div class="relative max-w-lg w-[90%] p-6 bg-black/70 border border-[#00e6ff] rounded-2xl shadow-2xl text-white text-sm">
+</div>
+
+<!-- ABOUT OVERLAY -->
+<div id="about-overlay" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 opacity-0 hidden-fade">
+    <div class="relative max-w-lg w-[90%] p-6 bg-black/70 border border-[#00e6ff] rounded-2xl shadow-2xl text-sm">
         <button id="about-close" class="absolute top-3 right-3 text-[#ff00d4] font-bold">✖</button>
         <div class="whitespace-pre-wrap">
-⚜️✨ CARA JOIN SERVER GTZS-PS ✨⚜️
+⚜️✨ CARA JOIN SERVER BARU ✨⚜️
 
-1️⃣ Masuk ke menu Server
-2️⃣ Isi nama server: GTZS
-3️⃣ Tekan Register
-4️⃣ Buat GrowID & Password
-5️⃣ Masukkan Email aktif
-
-🎮 Done! 
-</div>
- </div>
-
-</div><main id="main-content" class="main-content-anim opacity-0 transition-opacity duration-1000 relative z-20 min-h-screen flex items-center justify-center p-8" style="background-image:url('https://files.catbox.moe/2wqmke.jpeg'); background-size:cover; background-position:center;">
-    <div class="max-w-5xl w-full rounded-3xl p-8 bg-black/50 border border-[#00e6ff]/20 shadow-2xl backdrop-blur"><header class="flex items-center justify-between mb-6">
-        <div class="flex items-center gap-4">
-            <img src="https://files.catbox.moe/o8bf91.jpg" class="w-14 h-14 rounded-xl border border-[#00e6ff]/40">
-            <h1 class="text-2xl font-extrabold text-white" style="font-family: 'Orbitron', sans-serif;">GTZS PRIVATE SERVER</h1>
+🌐 1️⃣ Buka menu Server  
+🏷️ 2️⃣ Masukkan nama server: GTZS  
+🧾 3️⃣ Tekan Register / Daftar  
+👤 4️⃣ Buat GrowID & Password  
+📧 5️⃣ Masukkan Email aktif  
+🎮 6️⃣ Selamat! Server siap dimainkan 🎉
         </div>
-        <nav class="text-sm flex items-center gap-3 text-white">
-            <button id="about-btn" class="px-3 py-2 rounded-lg border border-[#00e6ff]/20 hover:border-[#00e6ff]">About</button>
-        </nav>
-    </header>
-
-    <section id="menu-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></section>
-
-    <footer class="mt-8 text-sm text-[#8fe6ff] opacity-90 flex items-center justify-between">
-        <div>© <span id="current-year"></span> GTZS PRIVATE SERVER</div>
-    </footer>
-
+    </div>
 </div>
 
-</main><script>
+<!-- MAIN CONTENT -->
+<main id="main-content" class="main-content-anim opacity-0 relative z-20 min-h-screen flex items-center justify-center p-8" 
+      style="background-image:url('https://files.catbox.moe/2wqmke.jpeg'); background-size:cover; background-position:center;">
+
+    <!-- Particle di atas background -->
+    <div id="main-particles"></div>
+
+    <!-- KONTEN UTAMA -->
+    <div class="relative z-20 max-w-5xl w-full rounded-3xl p-8 bg-black/50 border border-[#00e6ff]/20 shadow-2xl backdrop-blur">
+
+        <header class="flex items-center justify-between mb-6">
+            <div class="flex items-center gap-4">
+                <img src="https://files.catbox.moe/o8bf91.jpg" class="w-14 h-14 rounded-xl border border-[#00e6ff]/40">
+                <h1 class="text-2xl font-extrabold text-white" style="font-family: 'Orbitron', sans-serif;">GTZS PRIVATE SERVER</h1>
+            </div>
+            <nav class="text-sm flex items-center gap-3 text-white">
+                <button id="about-btn" class="px-3 py-2 rounded-lg border border-[#00e6ff]/20 hover:border-[#00e6ff]">About</button>
+            </nav>
+        </header>
+
+        <section id="menu-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></section>
+
+        <footer class="mt-8 text-sm text-[#8fe6ff] opacity-90 flex items-center justify-between">
+            <div>© <span id="current-year"></span> GTZS PRIVATE SERVER</div>
+        </footer>
+
+    </div>
+</main>
+
+<script>
+// MUSIC
 const music = document.getElementById("bg-music");
-let isMusicPlaying = true;
-document.getElementById("music-toggle-btn").onclick = () => {
+let isMusicPlaying = false;
+document.getElementById("music-toggle-btn").onclick = function() {
     const text = document.getElementById("music-status");
-    if(isMusicPlaying){ music.pause(); text.textContent = "Play Music"; }
-    else { music.play(); text.textContent = "Stop Music"; }
+    if(isMusicPlaying){
+        music.pause();
+        text.textContent = "Play Music";
+    } else {
+        music.play();
+        text.textContent = "Stop Music";
+    }
     isMusicPlaying = !isMusicPlaying;
 };
 
+// MENU DATA
 const menuData = [
     { title:"WhatsApp Community", desc:"Grup komunitas, diskusi & pengumuman", href:"https://chat.whatsapp.com/G8tlQPTaoe35LLQmeazR34?mode=wwt", icon:"https://files.catbox.moe/t46g6s.jpg" },
     { title:"Virtual Host", desc:"Panel host virtual & resources", href:"https://www.mediafire.com/file/y8iwyfytisu9fah/GTZS+BETA.txt/file", icon:"https://files.catbox.moe/rcxspu.tmp" },
@@ -83,6 +158,7 @@ const menuData = [
     { title:"Admin 2", desc:"Kontak admin cadangan", href:"https://wa.me/6285166991453", icon:"https://files.catbox.moe/6k8owo.jpg" }
 ];
 
+// RENDER MENU
 const menuGrid = document.getElementById("menu-grid");
 menuGrid.innerHTML = menuData.map(item => {
     let contentHTML = `<div class='menu-column-particles'><div class='menu-column-content'><div class='flex items-start gap-4'>
@@ -98,32 +174,50 @@ menuGrid.innerHTML = menuData.map(item => {
     }
 }).join('');
 
+// LOADING FADE
 window.addEventListener("load", () => {
     const loader = document.getElementById("loading-screen");
     const main = document.getElementById("main-content");
     loader.style.opacity = "0";
-    setTimeout(()=>loader.remove(),2000);
+    setTimeout(()=>loader.remove(),7000); // loading 7 detik
     main.style.opacity = "1";
 });
 
+// ABOUT OVERLAY
 const aboutBtn = document.getElementById("about-btn");
 const aboutOverlay = document.getElementById("about-overlay");
 const aboutClose = document.getElementById("about-close");
 aboutBtn.onclick = () => { aboutOverlay.classList.remove("hidden-fade"); aboutOverlay.style.opacity="1"; }
 aboutClose.onclick = () => { aboutOverlay.style.opacity="0"; setTimeout(()=>aboutOverlay.classList.add("hidden-fade"),500); }
 
-tsParticles.load({id:"tsparticles-gtzps",options:{background:{color:"transparent"},particles:{number:{value:40},color:{value:["#00e6ff","#ff00d4"]},shape:{type:"circle"},size:{value:{min:1,max:3}},opacity:{value:0.7},move:{enable:true,speed:1}},}});
+// PARTICLES BACKGROUND
+tsParticles.load({id:"tsparticles-gtzps",options:{
+    background:{color:"transparent"},
+    particles:{number:{value:40},color:{value:["#00e6ff","#ff00d4"]},shape:{type:"circle"},size:{value:{min:1,max:3}},opacity:{value:0.7},move:{enable:true,speed:1}}
+}});
 
-// Particles di setiap kolom
-menuData.forEach((_,i)=>{
-    const container = document.querySelectorAll('.menu-column-particles')[i];
-    tsParticles.load({id: container, options:{
-        fullScreen:false,
-        fpsLimit:60,
-        particles:{number:{value:20,density:{enable:true,area:400}},color:{value:["#00e6ff","#ff00d4"]},shape:{type:"circle"},size:{value:{min:1,max:2}},opacity:{value:0.7},move:{enable:true,speed:0.5,outModes:{default:"out"}}}
-    }});
+// Particle di main
+tsParticles.load({
+    id: "main-particles",
+    options: {
+        fullScreen: false,
+        fpsLimit: 60,
+        particles: {
+            number: { value: 60, density: { enable: true, area: 800 } },
+            color: { value: ["#00e6ff","#ff00d4","#9d00ff"] },
+            shape: { type: "circle" },
+            opacity: { value: 0.75 },
+            size: { value: { min: 1, max: 4 } },
+            move: { enable: true, speed: 0.9, outModes: { default: "out" } },
+            links: { enable: true, distance: 140, color: "#00e6ff", opacity: 0.12, width: 1 }
+        },
+        interactivity: { events: { onHover: { enable: true, mode: "repulse" }, resize: true }, modes: { repulse: { distance: 120, duration: 0.4 } } }
+    }
 });
 
+// YEAR
 document.getElementById("current-year").textContent = new Date().getFullYear();
-</script></body>
-</html>
+</script>
+
+</body>
+    </html></html>
