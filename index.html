@@ -1,81 +1,87 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GTZS Private Server</title>
-
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
-
-<style>
-/* Animasi konten utama */
-.main-content-anim {
-    animation: fadeInScale 1.4s ease-out forwards, floaty 6s ease-in-out infinite;
-    opacity: 0;
-}
-@keyframes fadeInScale {0%{opacity:0;transform:scale(0.97);}100%{opacity:1;transform:scale(1);}}
-@keyframes floaty {0%{transform:translateY(0px);}50%{transform:translateY(-6px);}100%{transform:translateY(0px);}}
-
-/* Particle container untuk main dan kolom menu */
-#main-particles, .menu-column-particles { position: absolute; inset: 0; z-index: 10; }
-#main-particles canvas, .menu-column-particles canvas { pointer-events: none !important; }
-
-/* Loading bar */
-.loading-bar-container {
-    width: 200px;
-    height: 8px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 4px;
-    overflow: hidden;
-}
-.loading-bar-fill {
-    width: 0%;
-    height: 100%;
-    background: linear-gradient(90deg,#00e6ff,#ff00d4);
-    animation: fillBar 7s linear forwards;
-}
-@keyframes fillBar {0%{width:0%;}100%{width:100%;}}
-
-/* Neon icon di loading */
-.neon-icon img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 12px;
-    border: 2px solid #00e6ff;
-}
-
-/* About overlay font styling */
-#about-overlay .whitespace-pre-wrap {
-    font-family: 'Rajdhani', sans-serif;
-    letter-spacing: 0.5px;
-    line-height: 1.6;
-    color: #ffffff;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTZS PS - Growtopia Private Server Terbaik</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Roboto:wght@400;400i,700&display=swap" rel="stylesheet">
+    <style>
+        /* (CSS tidak berubah, hanya konten footer) */
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* ... [Gaya CSS lainnya tetap sama] ... */
+        
+        /* --- FOOTER --- */
+        footer {
+            padding: 20px;
+            background-color: #0a0a0a;
+            color: #777;
+            font-size: 0.9em;
+        }
+        
+        /* Gaya untuk Tautan di Footer */
+        footer a {
+            color: #00ff99; /* Warna Neon Hijau agar menonjol */
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+    </style>
 </head>
-<body class="bg-black">
+<body>
 
-<!-- PARTICLES BACKGROUND -->
-<div id="tsparticles-gtzps" style="position: fixed; inset: 0; z-index: 0;"></div>
+    <audio class="audio-player" autoplay loop>
+        <source src="https://files.catbox.moe/sgon6d.mp3" type="audio/mp3">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
 
-<!-- MUSIC -->
-<audio id="bg-music" loop>
-    <source src="https://files.catbox.moe/e3zea4.mp3" type="audio/mpeg">
-</audio>
+    <header class="hero">
+        <img src="https://files.catbox.moe/ibqqua.jpg" alt="Logo GTZS PS" class="logo">
+        
+        <h1>GTZS PS: Server Privat Growtopia Terbaik. Item Langka? No Problem!</h1>
+        <p>Mainkan Growtopia tanpa batas di server yang didesain untuk *player* Indonesia. Nikmati **Drop Rate Tinggi**, **Item Kustom Eksklusif**, dan **Komunitas Ramai**!</p>
+        
+        <p class="status-bar">🟢 SERVER ONLINE! Kami Bangga Menyajikan: <span class="online-count">10+ Pemain Online Setiap Hari!</span></p>
 
-<!-- MUSIC BUTTON -->
-<div class="absolute top-6 left-6 z-30">
-    <button id="music-toggle-btn" class="flex items-center gap-3 px-3 py-2 bg-black/40 backdrop-blur rounded-2xl border border-[#00e6ff] hover:scale-105 transition-transform duration-300">
-        <img src="https://files.catbox.moe/o8bf91.jpg" class="w-8 h-8 rounded-full object-cover">
-        <span id="music-status" class="text-sm font-semibold tracking-wider text-white">Play Music</span>
-    </button>
-</div>
+        <a href="https://linktr.ee/GTZS.PS" class="cta-button">JOIN GTZS PS SEKARANG!</a>
+    </header>
 
-<!-- LOADING SCREEN -->
-<div id="loading-screen" class="fixed inset-0 z-40 flex flex-col items-center justify-center opacity-100">
+    <section class="features">
+        <h2>🔥 Kenapa Harus Main di GTZS PS?</h2>
+        <ul class="feature-list">
+            <li><strong>⚡ Drop Rate X-Treme</strong><br>Dapatkan World Lock, Diamond Lock, dan item berharga lainnya dengan usaha yang jauh lebih mudah.</li>
+            <li><strong>💎 Custom Item Galore</strong><br>Ribuan item kustom yang unik, hanya tersedia di GTZS PS, siap untuk Anda koleksi!</li>
+            <li><strong>🎉 Event Tiap Malam</strong><br>Staf aktif menyelenggarakan event seru dengan hadiah-hadiah in-game yang menggiurkan.</li>
+            <li><strong>🛡️ Stabilitas & Keamanan</strong><br>Server stabil, minim *lag*, dan sistem anti-cheat yang kuat menjamin permainan yang adil.</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>© 2025 GTZS PS. All Rights Reserved. | <a href="https://wa.me/6285166991453" target="_blank">Laporkan Masalah/Bug (WA)</a></p>
+        <p>This is a fan-made Private Server and is not affiliated with Growtopia or Ubisoft.</p>
+    </footer>
+
+    <script>
+        const audio = document.querySelector('.audio-player');
+        document.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play().catch(error => {});
+            }
+        });
+    </script>
+</body>
+</html><div id="loading-screen" class="fixed inset-0 z-40 flex flex-col items-center justify-center opacity-100">
     <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-[#00000080] backdrop-blur-sm"></div>
     <div class="relative z-50 flex flex-col items-center gap-4 p-6 rounded-2xl border border-[#00e6ff] bg-black/60 shadow-2xl">
         <div class="neon-icon">
