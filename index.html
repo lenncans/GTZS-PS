@@ -3,18 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GTZS PS - RAIH KEKAYAAN TANPA BATAS! Drop Rate Gila, Item Langka GRATIS!</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Roboto:wght@400;400i,700&display=swap" rel="stylesheet">
+    <title>GTZS PS - Official Private Server. Kualitas & Stabilitas Terbaik.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* [ ... Bagian CSS dari kode sebelumnya tetap sama ... ] */
-
-        /* --- KEYFRAMES (Animation) --- */
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(0, 255, 153, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(0, 255, 153, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 255, 153, 0); }
+        /* ====================================
+           GAYA CSS UTAMA (PROFESIONAL)
+           ==================================== */
+        
+        /* --- GLOBAL & BODY --- */
+        body {
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            background-color: #1a1a1a; /* Background sedikit lebih terang dari sebelumnya */
+            color: #e0e0e0; /* Warna teks lebih lembut */
+            margin: 0;
+            padding: 0;
+            line-height: 1.6; 
         }
-
+        
+        /* --- KEYFRAMES (Hanya Gradasi Bergerak) --- */
         @keyframes movingGradient {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -23,46 +30,180 @@
 
         /* --- HERO SECTION --- */
         .hero {
-            padding: 50px 20px 100px 20px; 
-            background: linear-gradient(-45deg, #1a1a1a, #121212, #2c3e50, #1a1a1a);
+            padding: 80px 20px 100px 20px; 
+            /* Gradasi warna gelap yang halus */
+            background: linear-gradient(-45deg, #121212, #1a1a1a, #222222, #121212);
             background-size: 400% 400%;
-            animation: movingGradient 15s ease infinite;
-            border-bottom: 7px solid #00ff99; 
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            animation: movingGradient 20s ease infinite; /* Animasi lebih lambat */
+            border-bottom: 5px solid #2ecc71; /* Hijau Stabil */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
         }
 
         /* Gaya khusus untuk tag jaminan di Hero Section */
         .guarantee-tag {
             display: inline-block;
-            font-family: 'Oswald', sans-serif;
-            font-size: 0.95em;
-            font-weight: 600;
-            color: #f4d03f; /* Kuning Emas */
-            background-color: #333;
-            padding: 5px 15px;
-            border-radius: 4px;
-            margin-bottom: 5px; /* Ruang lebih kecil antar tag */
-            border-bottom: 2px solid #e74c3c;
-        }
-        
-        /* [ ... LOGO, H1, P, CTA STYLES TETAP SAMA ... ] */
-
-        /* --- FOOTER --- */
-        footer {
-            padding: 20px;
-            background-color: #0a0a0a;
-            color: #777;
+            font-family: 'Roboto', sans-serif;
             font-size: 0.9em;
-        }
-        
-        /* Gaya khusus untuk penegasan komitmen */
-        .commitment {
-            color: #ccc;
-            font-weight: 400;
-            margin-bottom: 10px;
+            font-weight: 500;
+            color: #bb8800; /* Emas yang lebih halus */
+            background-color: #2a2a2a;
+            padding: 3px 12px;
+            border-radius: 20px; /* Lebih membulat */
+            margin: 3px 5px;
+            border: 1px solid #444;
         }
 
-        /* [ ... GAYA CSS LAINNYA TETAP SAMA ... ] */
+        /* --- LOGO STYLES --- */
+        .logo {
+            max-width: 120px; /* Sedikit dikecilkan untuk kesan elegan */
+            height: auto;
+            margin-bottom: 25px; 
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: transform 0.3s;
+        }
+
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            color: #2ecc71; /* Hijau Stabil */
+            font-size: clamp(2.5em, 5vw, 4em); 
+            text-transform: uppercase;
+            margin-bottom: 15px; 
+            text-shadow: none; /* Menghapus efek glow */
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 25px auto;
+            padding: 0 15px; 
+        }
+
+        /* --- STATUS BAR (Diubah menjadi tag informasi formal) --- */
+        .status-bar { 
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700; 
+            margin: 30px auto; 
+            font-size: 1em; 
+            background-color: #34495e; 
+            color: #ecf0f1;
+            padding: 15px 30px; 
+            border-radius: 6px;
+            width: fit-content;
+            max-width: 90%;
+            border-left: 5px solid #2ecc71;
+            /* Menghapus animasi pulse */
+        }
+        .status-bar .online-count {
+            color: #e74c3c;
+            font-weight: 700;
+        }
+        
+        /* --- CTA BUTTON (Lebih Bersih) --- */
+        .cta-button {
+            display: inline-block;
+            background-color: #2ecc71; /* Hijau Profesional */
+            color: white;
+            padding: 18px 40px;
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 1.5em;
+            border-radius: 6px;
+            margin-top: 40px;
+            box-shadow: 0 4px #27ae60; /* Bayangan halus */
+            transition: all 0.1s ease;
+        }
+        .cta-button:hover { 
+            background-color: #27ae60; 
+            box-shadow: 0 2px #1e8449;
+            transform: translateY(2px);
+        }
+
+        /* --- FEATURES SECTION --- */
+        .features { 
+            padding: 60px 20px; 
+            background-color: #121212; 
+        }
+        .features h2 { 
+            font-family: 'Oswald', sans-serif;
+            color: #ecf0f1; 
+            margin-bottom: 40px; 
+            font-size: 2.5em;
+        }
+        .feature-list { 
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            list-style: none; 
+            padding: 0; 
+            flex-wrap: wrap;
+        }
+        .feature-list li { 
+            background: #222222; 
+            width: clamp(250px, 40%, 300px); 
+            padding: 25px; 
+            border-radius: 8px; 
+            text-align: left; 
+            border-left: 4px solid #3498db; /* Aksen Biru */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, background-color 0.3s;
+            margin-bottom: 20px; 
+        }
+        .feature-list li:hover {
+            transform: translateY(-5px);
+            background-color: #2a2a2a;
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.7);
+        }
+        .feature-list strong {
+            color: #2ecc71;
+            font-size: 1.1em;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* --- FOOTER (Lebih Rapi dan Formal) --- */
+        footer {
+            padding: 30px 20px;
+            background-color: #0d0d0d;
+            color: #888;
+            font-size: 0.85em;
+            border-top: 1px solid #333;
+        }
+        footer p {
+            margin-bottom: 5px;
+        }
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: #5d9cec;
+            text-decoration: underline;
+        }
+        .commitment, .server-credit {
+            color: #ccc; 
+            font-size: 0.95em;
+            margin-bottom: 15px;
+        }
+        .commitment strong { color: #2ecc71; }
+
+        /* --- MEDIA QUERY (Responsif Profesional) --- */
+        @media (max-width: 600px) {
+            .hero { padding-top: 50px; }
+            .logo { max-width: 100px; }
+            h1 { font-size: 2em; }
+            .guarantee-tag { font-size: 0.75em; padding: 3px 8px; }
+            .status-bar { font-size: 0.9em; padding: 10px 15px; max-width: 90%; }
+            .feature-list li { width: 100%; text-align: center; }
+            .cta-button { font-size: 1.3em; padding: 15px 30px; }
+        }
+
+        /* Menyembunyikan kontrol audio */
+        .audio-player { display: none; }
     </style>
 </head>
 <body>
@@ -75,42 +216,41 @@
     <header class="hero">
         <img src="https://files.catbox.moe/ibqqua.jpg" alt="Logo GTZS PS" class="logo">
         
-        <p class="guarantee-tag">★ SERVER AKTIF SEJAK 2023! TERBUKTI STABIL & AMAN ★</p>
-        
-        <p class="guarantee-tag">Landing Page Cepat & Aman | Optimized for Performance</p>
+        <p class="guarantee-tag">SERVER AKTIF SEJAK 2023 | TERPERCAYA & TERUJIAN</p>
+        <p class="guarantee-tag">Landing Page Cepat | Optimasi Performa Maksimal</p>
 
-        <h1>GTZS PS: RAIH KEKAYAAN TANPA BATAS! Drop Rate Gila, Item Langka GRATIS!</h1>
-        <p>Lupakan Grinding yang melelahkan! Server privat #1 Indonesia ini hadir dengan ekonomi yang ramah pemain, item Kustom paling keren, dan **Komunitas yang selalu siap PARTY!**</p>
+        <h1>GTZS PS: OFFICIAL PRIVATE SERVER INDONESIA</h1>
+        
+        <p>Rasakan kebebasan bermain Growtopia dengan server yang mengutamakan kualitas, stabilitas, dan inovasi item kustom. Dikelola oleh tim profesional untuk pengalaman terbaik Anda.</p>
         
         <p class="status-bar">
-            🟢 STATUS: STABIL & ONLINE! | KAMI AKTIF: 
-            <span class="online-count">**Rata-Rata 10+ Pemain Online Per Jam!**</span>
+            STATUS: **SERVER STABIL DAN ONLINE** | AKTIVITAS: 
+            <span class="online-count">Rata-Rata 10+ Pemain Aktif Per Jam</span>
         </p>
 
-        <a href="https://linktr.ee/GTZS.PS" class="cta-button">JOIN GTZS PS SEKARANG!</a>
+        <a href="https://linktr.ee/GTZS.PS" class="cta-button">DOWNLOAD & BERGABUNG SEKARANG</a>
     </header>
 
     <section class="features">
-        <h2>🔥 Kenapa Harus Main di GTZS PS?</h2>
+        <h2>MENGAPA MEMILIH GTZS PS?</h2>
         <ul class="feature-list">
-            <li><strong>⚡ DROP RATE GILA!</strong><br>Dapatkan WL, DL, dan item berharga lainnya dengan MUDAH. *Farming* tidak pernah semenyenangkan ini!</li>
-            <li><strong>💎 CUSTOM ITEM LIMITED</strong><br>Ribuan item kustom yang unik, yang didesain eksklusif hanya untuk Anda koleksi. Tampil PALING BEDA!</li>
-            <li><strong>🎉 EVENT BERHADIAH HARI INI JUGA!</strong><br>Staf aktif menyelenggarakan event seru dengan hadiah Langka. Jangan sampai kelewatan kesempatan Emas!</li>
-            
-            <li><strong>🛡️ JAMINAN SERVER ANTI-LAG</strong><br>Kami menggunakan hosting premium. Nikmati pengalaman bermain yang *smooth* tanpa gangguan *lag* atau *disconnect* tiba-tiba.</li>
+            <li><strong>🌐 EKONOMI SERVER YANG SEHAT</strong><br>Drop Rate diatur untuk keseimbangan yang adil, memungkinkan kemajuan cepat tanpa merusak nilai item.</li>
+            <li><strong>✨ KOLEKSI ITEM EKSKLUSIF</strong><br>Item kustom yang dirancang unik dan terperinci. Tunjukkan status Anda dengan item yang tidak dimiliki server lain.</li>
+            <li><strong>🤝 KOMUNITAS & EVENT TERATUR</strong><br>Partisipasi di event harian dan interaksi di komunitas yang ramah dan aktif, didukung oleh Staf yang responsif.</li>
+            <li><strong>🛡️ STABILITAS JARINGAN PREMIUM</strong><br>Jaminan server anti-lag dan bebas *disconnect* berkat infrastruktur hosting tingkat profesional.</li>
         </ul>
     </section>
 
     <footer>
         <p class="commitment">GTZS PS dikelola dengan dedikasi penuh oleh Staf Resmi **@Kitagawa**.</p>
         
-        <p class="server-credit">Server By **@Kitagawa**</p>
+        <p class="server-credit">Server Development by **@Kitagawa**</p>
         <p>© 2025 GTZS PS. All Rights Reserved. | 
             <a href="https://wa.me/6282229019195" target="_blank">
-                **LAPORKAN BUG & FEEDBACK (Hubungi Staf)**
+                LAPORAN & DUKUNGAN TEKNIS (WhatsApp)
             </a>
         </p>
-        <p>This is a fan-made Private Server and is not affiliated with Growtopia or Ubisoft.</p>
+        <p>Disclaimer: This is an independent Private Server and is not affiliated with Growtopia or Ubisoft.</p>
     </footer>
 
     <script>
